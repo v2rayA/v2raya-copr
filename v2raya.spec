@@ -36,6 +36,8 @@ go build -ldflags '-X github.com/v2rayA/v2rayA/global.Version=unstable -s -w' -o
 %install
 cd "%{BUILD_DIR}"
 install -Dm 755 service/v2raya -t %{buildroot}/usr/bin/
+find web -type d -exec install -vd %{buildroot}/etc/v2raya/{} \;
+find web -type f -exec install -vm 644 {} %{buildroot}/etc/v2raya/{} \;
 install -dm 750 %{buildroot}/etc/v2raya/
 install -Dm 644 install/universal/v2raya.desktop -t %{buildroot}/usr/share/applications/
 install -Dm 644 install/universal/v2raya.service -t %{buildroot}/usr/lib/systemd/system/
