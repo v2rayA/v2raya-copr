@@ -1,5 +1,5 @@
 Name:           v2rayA
-Version:        1.4.4
+Version:        1.5.1
 Release:        1
 Summary:        A Linux web GUI client of Project V which supports V2Ray, Xray, SS, SSR, Trojan and Pingtunnel
 License:        GPL-3.0-only
@@ -36,12 +36,12 @@ go build -ldflags '-X github.com/v2rayA/v2rayA/global.Version=unstable -s -w' -o
 %install
 cd "%{BUILD_DIR}"
 install -Dm 755 service/v2raya -t %{buildroot}/usr/bin/
-find web -type d -exec install -vd %{buildroot}/etc/v2raya/{} \;
-find web -type f -exec install -vm 644 {} %{buildroot}/etc/v2raya/{} \;
+#find web -type d -exec install -vd %{buildroot}/etc/v2raya/{} \;
+#find web -type f -exec install -vm 644 {} %{buildroot}/etc/v2raya/{} \;
 install -dm 750 %{buildroot}/etc/v2raya/
 install -Dm 644 install/universal/v2raya.desktop -t %{buildroot}/usr/share/applications/
 install -Dm 644 install/universal/v2raya.service -t %{buildroot}/usr/lib/systemd/system/
-#install -Dm 644 install/universal/v2raya@.service -t %{buildroot}/usr/lib/systemd/system/
+install -Dm 644 install/universal/v2raya@.service -t %{buildroot}/usr/lib/systemd/system/
 install -Dm 644 gui/public/img/icons/android-chrome-512x512.png %{buildroot}/usr/share/icons/hicolor/512x512/apps/v2raya.png
 
 %post
@@ -51,7 +51,7 @@ install -Dm 644 gui/public/img/icons/android-chrome-512x512.png %{buildroot}/usr
 /etc/v2raya/
 /usr/bin/v2raya
 /usr/lib/systemd/system/v2raya.service
-#/usr/lib/systemd/system/v2raya@.service
+/usr/lib/systemd/system/v2raya@.service
 /usr/share/applications/v2raya.desktop
 /usr/share/icons/hicolor/512x512/apps/v2raya.png
 
