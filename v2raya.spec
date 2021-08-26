@@ -9,7 +9,7 @@ Source0:        https://github.com/v2rayA/v2rayA/archive/refs/tags/v%{version}.t
 BuildRequires:  golang
 BuildRequires:  nodejs
 BuildRequires:  python2
-BuildRequires:  yarnpkg
+BuildRequires:  npm
 Recommends:     v2ray-core
 
 %undefine _missing_build_ids_terminate_build
@@ -25,8 +25,9 @@ A Linux web GUI client of Project V which supports V2Ray, Xray, SS, SSR, Trojan 
 %build
 # build gui
 cd %{BUILD_DIR}/gui
-yarn --check-files
-OUTPUT_DIR=%{BUILD_DIR}/service/server/router/web yarn build
+npm install yarn
+./node_modules/yarn/bin/yarn --check-files
+OUTPUT_DIR=%{BUILD_DIR}/service/server/router/web ./node_modules/yarn/bin/yarn build
 # build core
 cd %{BUILD_DIR}/service
 export GO111MODULE=on
