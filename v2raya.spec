@@ -1,6 +1,6 @@
 Name:           v2rayA
 Version:        1.5.1
-Release:        1
+Release:        2
 Summary:        A Linux web GUI client of Project V which supports V2Ray, Xray, SS, SSR, Trojan and Pingtunnel
 License:        GPL-3.0-only
 Group:          Productivity/Networking/Web/Proxy
