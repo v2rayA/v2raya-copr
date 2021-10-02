@@ -1,6 +1,6 @@
 Name:           v2rayA
-Version:        1.5.3
-Release:        2
+Version:        1.5.4
+Release:        1
 Summary:        A Linux web GUI client of Project V which supports V2Ray, Xray, SS, SSR, Trojan and Pingtunnel
 License:        AGPL-3.0
 Group:          Productivity/Networking/Web/Proxy
@@ -32,7 +32,7 @@ OUTPUT_DIR=%{BUILD_DIR}/service/server/router/web ./node_modules/yarn/bin/yarn b
 cd %{BUILD_DIR}/service
 export GO111MODULE=on
 export GOPROXY=https://goproxy.io
-go build -ldflags '-X github.com/v2rayA/v2rayA/global.Version=unstable -s -w' -o v2raya
+go build -ldflags '-X github.com/v2rayA/v2rayA/conf.Version='%{version}' -s -w' -o v2raya
 
 %install
 cd "%{BUILD_DIR}"
