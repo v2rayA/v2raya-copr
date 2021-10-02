@@ -10,6 +10,7 @@ BuildRequires:  golang
 BuildRequires:  nodejs
 BuildRequires:  python2
 BuildRequires:  npm
+BuildRequires:	git
 Recommends:     v2ray-core
 
 %undefine _missing_build_ids_terminate_build
