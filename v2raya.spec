@@ -8,7 +8,6 @@ Url:            https://github.com/v2rayA/v2rayA
 Source0:        https://github.com/v2rayA/v2rayA/archive/refs/tags/v%{version}.tar.gz
 BuildRequires:  golang
 BuildRequires:  nodejs
-BuildRequires:  python2
 BuildRequires:  npm
 BuildRequires:	git
 Recommends:     v2ray-core
