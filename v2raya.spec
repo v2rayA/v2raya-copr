@@ -32,7 +32,7 @@ OUTPUT_DIR=%{BUILD_DIR}/service/server/router/web ./node_modules/yarn/bin/yarn b
 # build core
 cd %{BUILD_DIR}/service
 export GO111MODULE=on
-#export GOPROXY=https://goproxy.io
+export GOPROXY=https://goproxy.io
 go build -ldflags '-X github.com/v2rayA/v2rayA/conf.Version='%{version}' -s -w' -o v2raya
 
 %install
