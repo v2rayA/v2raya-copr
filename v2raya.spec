@@ -1,4 +1,4 @@
-Name:           v2rayA
+Name:           v2raya
 Version:        1.5.5
 Release:        1
 Summary:        A Linux web GUI client of Project V which supports V2Ray, Xray, SS, SSR, Trojan and Pingtunnel
@@ -11,6 +11,7 @@ BuildRequires:  nodejs
 BuildRequires:  npm
 BuildRequires:	git
 Recommends:     v2ray-core
+Obsoletes:      v2rayA <= 1.5.5
 
 %undefine _missing_build_ids_terminate_build
 %undefine _debugsource_packages
@@ -19,7 +20,7 @@ Recommends:     v2ray-core
 A Linux web GUI client of Project V which supports V2Ray, Xray, SS, SSR, Trojan and Pingtunnel
 
 %prep
-%setup -q
+%setup -q -n v2rayA-%{version}
 %define BUILD_DIR %{_builddir}/v2rayA-%{version}
 
 %build
