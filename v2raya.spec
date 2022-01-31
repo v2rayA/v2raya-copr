@@ -1,15 +1,15 @@
 Name:           v2raya
-Version:        1.5.5
+Version:        1.5.6
 Release:        1
 Summary:        A Linux web GUI client of Project V which supports V2Ray, Xray, SS, SSR, Trojan and Pingtunnel
 License:        AGPL-3.0
 Group:          Productivity/Networking/Web/Proxy
 Url:            https://github.com/v2rayA/v2rayA
 Source0:        https://github.com/v2rayA/v2rayA/archive/refs/tags/v%{version}.tar.gz
+Patch0:         v2raya-1.5.6-build-with-golang-1.16.patch
 BuildRequires:  golang
 BuildRequires:  nodejs
 BuildRequires:  npm
-BuildRequires:	git
 Recommends:     v2ray-core
 Obsoletes:      v2rayA <= 1.5.5
 
@@ -21,6 +21,7 @@ A Linux web GUI client of Project V which supports V2Ray, Xray, SS, SSR, Trojan 
 
 %prep
 %setup -q -n v2rayA-%{version}
+%patch0 -p1
 %define BUILD_DIR %{_builddir}/v2rayA-%{version}
 
 %build
@@ -50,12 +51,13 @@ install -Dm 644 gui/public/img/icons/android-chrome-512x512.png %{buildroot}/usr
 %postun
 
 %files
-/etc/v2raya/
-/usr/bin/v2raya
-/usr/lib/systemd/system/v2raya.service
-/usr/lib/systemd/system/v2raya@.service
-/usr/share/applications/v2raya.desktop
-/usr/share/icons/hicolor/512x512/apps/v2raya.png
+%license LICENSE
+%{_sysconfdir}/v2raya/
+%{_bindir}/v2raya
+%{_prefix}/lib/systemd/system/v2raya.service
+%{_prefix}/lib/systemd/system//v2raya@.service
+%{_datadir}/applications/v2raya.desktop
+%{_datadir}/icons/hicolor/512x512/apps/v2raya.png
 
 %changelog
 
