@@ -1,5 +1,5 @@
 Name:           v2raya
-Version:        1.5.6
+Version:        1.5.6.1
 Release:        1
 Summary:        A Linux web GUI client of Project V which supports V2Ray, Xray, SS, SSR, Trojan and Pingtunnel
 License:        AGPL-3.0
