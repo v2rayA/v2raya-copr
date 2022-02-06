@@ -16,7 +16,7 @@ Patch0:  v2raya-1.5.6-build-with-golang-1.16.patch
 BuildRequires:  golang
 BuildRequires:  nodejs
 BuildRequires:  npm
-BuildRequires:	git
+BuildRequires:	yarnpkg
 Recommends:     v2ray-core
 Conflicts:      v2raya
 Conflicts:      v2rayA
