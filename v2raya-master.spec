@@ -1,6 +1,6 @@
 %global forgeurl https://github.com/v2rayA/v2raya
 %global branch master
-%global timenow %(echo $(date +%Y%m%d.%H%M))
+%global timenow %(echo $(TZ='Asia/Shanghai' date +%Y%m%d.%H%M))
 %global commit_id %(api_result=$(curl -s https://api.github.com/repos/v2rayA/v2rayA/branches/master | head -n 4 | tail -n 1); echo ${api_result:12:7})
 %forgemeta
 
