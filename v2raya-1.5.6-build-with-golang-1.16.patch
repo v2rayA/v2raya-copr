@@ -1,6 +1,6 @@
 diff -ur v2rayA-master.orig/service/go.mod v2rayA-master/service/go.mod
---- v2rayA-master.orig/service/go.mod	2022-02-06 22:02:58.000000000 +0800
-+++ v2rayA-master/service/go.mod	2022-02-07 05:14:44.913008542 +0800
+--- v2rayA-master.orig/service/go.mod	2022-02-19 18:43:13.000000000 +0800
++++ v2rayA-master/service/go.mod	2022-02-23 05:34:07.516349702 +0800
 @@ -1,6 +1,6 @@
  module github.com/v2rayA/v2rayA
  
@@ -54,8 +54,8 @@ diff -ur v2rayA-master.orig/service/go.mod v2rayA-master/service/go.mod
  // Replace dependency modules with local developing copy
  // use `go list -m all` to confirm the final module used
 diff -ur v2rayA-master.orig/service/go.sum v2rayA-master/service/go.sum
---- v2rayA-master.orig/service/go.sum	2022-02-06 22:02:58.000000000 +0800
-+++ v2rayA-master/service/go.sum	2022-02-07 05:14:44.914008556 +0800
+--- v2rayA-master.orig/service/go.sum	2022-02-19 18:43:13.000000000 +0800
++++ v2rayA-master/service/go.sum	2022-02-23 05:34:07.515349687 +0800
 @@ -1,31 +1,77 @@
  cloud.google.com/go v0.26.0/go.mod h1:aQUYkXzVsufM+DwF1aE+0xfcU+56JwCaLick0ClmMTw=
 +cloud.google.com/go v0.31.0/go.mod h1:aQUYkXzVsufM+DwF1aE+0xfcU+56JwCaLick0ClmMTw=
@@ -497,7 +497,7 @@ diff -ur v2rayA-master.orig/service/go.sum v2rayA-master/service/go.sum
 +github.com/v2fly/ss-bloomring v0.0.0-20210312155135-28617310f63e/go.mod h1:5t19P9LBIrNamL6AcMQOncg/r10y3Pc01AbHeMhwlpU=
  github.com/v2fly/v2ray-core/v4 v4.42.2-0.20210928173456-a9979057dcaa h1:MyrHPDN4JhKoOvBOK8UUVoXd4Pd9AoIfbLClTPEbKt4=
  github.com/v2fly/v2ray-core/v4 v4.42.2-0.20210928173456-a9979057dcaa/go.mod h1:6wk/2dqqbvcRFSLcSRR5GNfjMrcJcephXmA1HjZs0Pg=
- github.com/v2rayA/RoutingA v1.0.1 h1:vAU6Xz3aK8R2NvpKxnD/c54UouLlpGxMDhriCh6hBGU=
+ github.com/v2rayA/RoutingA v1.0.2 h1:UHBIdrflQ0zj+PXnEDLj9D2aTk2gYreIsvtfPKNdpu4=
 @@ -223,110 +467,259 @@
  github.com/v2rayA/v2ray-lib v0.0.0-20211227083129-d4f59fbf62b8/go.mod h1:58r5UEMOLW9jmayL39nq4yyURyLb2bT06+vvWRaa8gI=
  github.com/vearutop/statigz v1.1.7 h1:/36vj7srdvhJUwV2tR4rXWhNyO7O6hRyNtpPWnH5fN0=
