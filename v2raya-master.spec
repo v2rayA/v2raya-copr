@@ -18,6 +18,7 @@ BuildRequires:  nodejs
 BuildRequires:  npm
 BuildRequires:	yarnpkg
 Recommends:     v2ray-core
+Recommends:	v2ray-rules-dat
 Conflicts:      v2raya
 Conflicts:      v2rayA
 
@@ -71,3 +72,6 @@ install -Dm 644 gui/public/img/icons/android-chrome-512x512.png %{buildroot}/usr
 %{_datadir}/icons/hicolor/512x512/apps/v2raya.png
 
 %changelog
+* Wed Mar 23 2022 zhullyb <zhullyb@outlook.com> - 1.5.6.2-2
+- Add v2ray-rules-dat as Recommends.
+
