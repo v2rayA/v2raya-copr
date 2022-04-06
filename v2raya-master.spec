@@ -1,3 +1,4 @@
+%global debug_package %{nil}
 %global forgeurl https://github.com/v2rayA/v2raya
 %global branch master
 %global timenow %(echo $(TZ='Asia/Shanghai' date +%Y%m%d.%H%M))
@@ -52,9 +53,6 @@ install -Dm 644 install/universal/v2raya.desktop -t %{buildroot}%{_datadir}/appl
 install -Dm 644 install/universal/v2raya.service -t %{buildroot}%{_unitdir}/
 install -Dm 644 install/universal/v2raya@.service -t %{buildroot}%{_unitdir}/
 install -Dm 644 gui/public/img/icons/android-chrome-512x512.png %{buildroot}%{_datadir}/icons/hicolor/512x512/apps/v2raya.png
-
-%post
-%postun
 
 %files
 %license LICENSE
