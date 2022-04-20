@@ -36,9 +36,6 @@ cd %{BUILD_DIR}/gui
 yarn --check-files
 OUTPUT_DIR=%{BUILD_DIR}/service/server/router/web yarn build
 
-#get commit id
-api_result=`curl -s https://api.github.com/repos/v2rayA/v2rayA/branches/master | head -n 4 | tail -n 1`
-
 # build core
 cd %{BUILD_DIR}/service
 export GO111MODULE=on
@@ -51,7 +48,7 @@ install -Dm 755 service/v2raya -t %{buildroot}%{_bindir}/
 install -dm 750 %{buildroot}/etc/v2raya/
 install -Dm 644 install/universal/v2raya.desktop -t %{buildroot}%{_datadir}/applications/
 install -Dm 644 install/universal/v2raya.service -t %{buildroot}%{_unitdir}/
-install -Dm 644 install/universal/v2raya@.service -t %{buildroot}%{_unitdir}/
+install -Dm 644 install/universal/v2raya-lite.service -t %{buildroot}%{_userunitdir}/
 install -Dm 644 gui/public/img/icons/android-chrome-512x512.png %{buildroot}%{_datadir}/icons/hicolor/512x512/apps/v2raya.png
 
 %files
@@ -59,11 +56,14 @@ install -Dm 644 gui/public/img/icons/android-chrome-512x512.png %{buildroot}%{_d
 %{_sysconfdir}/v2raya/
 %{_bindir}/v2raya
 %{_unitdir}/v2raya.service
-%{_unitdir}/v2raya@.service
+%{_userunitdir}/v2raya-lite.service
 %{_datadir}/applications/v2raya.desktop
 %{_datadir}/icons/hicolor/512x512/apps/v2raya.png
 
 %changelog
+* Wed Apr 20 2022 zhullyb <zhullyb@outlook.com> - 1.5.6.2-4
+- v2raya@.sercive -> v2raya-lite.service
+
 * Wed Mar 23 2022 zhullyb <zhullyb@outlook.com> - 1.5.6.2-3
 - Add v2ray-rules-dat as Recommends.
 
