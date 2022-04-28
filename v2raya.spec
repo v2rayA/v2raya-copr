@@ -6,9 +6,9 @@ License:        AGPL-3.0
 Group:          Productivity/Networking/Web/Proxy
 Url:            https://github.com/v2rayA/v2rayA
 Source0:        https://github.com/v2rayA/v2rayA/archive/refs/tags/v%{version}.tar.gz
-BuildRequires:  golang = 1.17
+BuildRequires:  golang >= 1.17
 BuildRequires:  nodejs
-BuildRequires:  yarnpkg
+BuildRequires:  yarn
 Recommends:     v2ray-core
 Obsoletes:      v2rayA <= 1.5.5
 
@@ -39,7 +39,7 @@ install -Dm 755 service/v2raya -t %{buildroot}/usr/bin/
 install -dm 750 %{buildroot}/etc/v2raya/
 install -Dm 644 install/universal/v2raya.desktop -t %{buildroot}/usr/share/applications/
 install -Dm 644 install/universal/v2raya.service -t %{buildroot}/usr/lib/systemd/system/
-install -Dm 644 install/universal/v2raya-lite.service -t %{_prefix}/lib/systemd/user/
+install -Dm 644 install/universal/v2raya-lite.service -t %{buildroot}/usr/lib/systemd/user/
 install -Dm 644 gui/public/img/icons/android-chrome-512x512.png %{buildroot}/usr/share/icons/hicolor/512x512/apps/v2raya.png
 
 %files
