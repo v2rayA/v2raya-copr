@@ -1,13 +1,13 @@
 Name:           v2raya
 Version:        1.5.7
-Release:        1%{?dist}
+Release:        1
 Summary:        A Linux web GUI client of Project V which supports V2Ray, Xray, SS, SSR, Trojan and Pingtunnel
 License:        AGPL-3.0
 Group:          Productivity/Networking/Web/Proxy
 Url:            https://github.com/v2rayA/v2rayA
 Source0:        https://github.com/v2rayA/v2rayA/archive/refs/tags/v%{version}.tar.gz
 BuildRequires:  golang >= 1.17
-BuildRequires:  nodejs
+BuildRequires:  nodejs >= 17
 BuildRequires:  yarn
 Recommends:     v2ray-core
 Obsoletes:      v2rayA <= 1.5.5
@@ -25,6 +25,7 @@ A Linux web GUI client of Project V which supports V2Ray, Xray, SS, SSR, Trojan 
 %build
 # build gui
 cd %{BUILD_DIR}/gui
+export NODE_OPTIONS=--openssl-legacy-provider
 yarn --check-files
 OUTPUT_DIR=%{BUILD_DIR}/service/server/router/web yarn build
 # build core
