@@ -32,6 +32,7 @@ A web GUI client of Project V which supports V2Ray, Xray, SS, SSR, Trojan and Pi
 %build
 # build gui
 cd %{BUILD_DIR}/gui
+export NODE_OPTIONS=--openssl-legacy-provider
 yarn --check-files
 OUTPUT_DIR=%{BUILD_DIR}/service/server/router/web yarn build
 
