@@ -15,7 +15,6 @@ URL:	 %{forgeurl}
 Source:  %{forgesource}
 BuildRequires:  golang > 1.16
 BuildRequires:  nodejs
-BuildRequires:  npm
 BuildRequires:	yarnpkg
 BuildRequires: systemd
 Recommends:     v2ray-core
