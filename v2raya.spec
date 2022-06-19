@@ -1,12 +1,11 @@
 Name:           v2raya
-Version:        1.5.7
-Release:        2
+Version:        1.5.8.1
+Release:        1%{?dist}
 Summary:        A Linux web GUI client of Project V which supports V2Ray, Xray, SS, SSR, Trojan and Pingtunnel
 License:        AGPL-3.0
 Group:          Productivity/Networking/Web/Proxy
 Url:            https://github.com/v2rayA/v2rayA
 Source0:        https://github.com/v2rayA/v2rayA/archive/refs/tags/v%{version}.tar.gz
-Patch0:         https://github.com/v2rayA/v2rayA/commit/b47214108188d5c2772848db1c96c422493f2051.patch
 BuildRequires:  golang >= 1.17
 BuildRequires:  nodejs >= 17
 BuildRequires:  yarn
@@ -21,7 +20,6 @@ A Linux web GUI client of Project V which supports V2Ray, Xray, SS, SSR, Trojan 
 
 %prep
 %setup -q -n v2rayA-%{version}
-%patch0 -p1
 %define BUILD_DIR %{_builddir}/v2rayA-%{version}
 
 %build
@@ -55,6 +53,9 @@ install -Dm 644 gui/public/img/icons/android-chrome-512x512.png %{buildroot}/usr
 %{_datadir}/icons/hicolor/512x512/apps/v2raya.png
 
 %changelog
+* Sun Jun 19 2022 zhullyb <zhullyb@outlook.com> - 1.5.8.1-1
+- new version
+
 * Tue May 24 2022 zhullyb <zhullyb@outlook.com> - 1.5.7-2
 - Backport
   https://github.com/v2rayA/v2rayA/commit/b47214108188d5c2772848db1c96c422493f2051
