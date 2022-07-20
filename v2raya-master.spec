@@ -13,12 +13,11 @@ License: AGPL-3.0
 Group:   Productivity/Networking/Web/Proxy
 URL:	 %{forgeurl}
 Source:  %{forgesource}
-BuildRequires:  golang > 1.16
+BuildRequires:  golang = 1.18.4
 BuildRequires:  nodejs
 BuildRequires:	yarnpkg
-BuildRequires: systemd
+BuildRequires:  systemd
 Recommends:     v2ray-core
-Recommends:	v2ray-rules-dat
 Conflicts:      v2raya
 Conflicts:      v2rayA
 
@@ -61,6 +60,9 @@ install -Dm 644 gui/public/img/icons/android-chrome-512x512.png %{buildroot}%{_d
 %{_datadir}/icons/hicolor/512x512/apps/v2raya.png
 
 %changelog
+* Wed Jul 20 2022 zhullyb <zhullyb@outlook.com> - 20220720.2200.288cd62-0.gitmaster
+- rebuilt with go 1.18.4
+
 * Wed Apr 20 2022 zhullyb <zhullyb@outlook.com> - 1.5.6.2-4
 - v2raya@.sercive -> v2raya-lite.service
 
