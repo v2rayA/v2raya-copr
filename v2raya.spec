@@ -1,5 +1,5 @@
 Name:           v2raya
-Version:        1.5.8.1
+Version:        1.5.9.1698.1
 Release:        1%{?dist}
 Summary:        A Linux web GUI client of Project V which supports V2Ray, Xray, SS, SSR, Trojan and Pingtunnel
 License:        AGPL-3.0
@@ -53,6 +53,9 @@ install -Dm 644 gui/public/img/icons/android-chrome-512x512.png %{buildroot}/usr
 %{_datadir}/icons/hicolor/512x512/apps/v2raya.png
 
 %changelog
+* Thu Aug 04 2022 zhullyb <zhullyb@outlook.com> - 1.5.9.1698.1-1
+- new version
+
 * Sun Jun 19 2022 zhullyb <zhullyb@outlook.com> - 1.5.8.1-1
 - new version
 
