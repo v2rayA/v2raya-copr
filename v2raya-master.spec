@@ -13,7 +13,7 @@ License: AGPL-3.0
 Group:   Productivity/Networking/Web/Proxy
 URL:	 %{forgeurl}
 Source:  %{forgesource}
-BuildRequires:  golang = 1.18.4
+BuildRequires:  golang >= 1.18
 BuildRequires:  nodejs
 BuildRequires:	yarnpkg
 BuildRequires:  systemd
