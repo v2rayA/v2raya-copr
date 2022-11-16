@@ -25,8 +25,8 @@ Conflicts:      v2rayA
 A web GUI client of Project V which supports V2Ray, Xray, SS, SSR, Trojan and Pingtunnel
 
 %prep
-%setup -n v2rayA-master -q
-%define BUILD_DIR %{_builddir}/v2rayA-master
+%setup -n v2rayA-feat_v5 -q
+%define BUILD_DIR %{_builddir}/v2rayA-feat_v5
 
 %build
 # build gui
