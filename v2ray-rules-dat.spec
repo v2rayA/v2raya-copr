@@ -23,7 +23,7 @@ cp %{S:1} ./LICENSE
 %install
 install -Dm644 geoip.dat -t %{buildroot}%{_datadir}/v2ray
 install -Dm644 geosite.dat -t %{buildroot}%{_datadir}/v2ray
-ln -s %{_datadir}/v2ray/geosite.dat %{buildroot}%{_datadir}/v2ray/LoyalsoldierSite.dat
+ln -s /usr/share/v2ray/geosite.dat %{buildroot}%{_datadir}/v2ray/LoyalsoldierSite.dat
 
 %files
 %license LICENSE
