@@ -21,15 +21,15 @@ BuildArch: noarch
 cp %{S:1} ./LICENSE
 
 %install
-install -Dm644 geoip.dat -t %{buildroot}%{_prefix}/local/share/v2ray
-install -Dm644 geosite.dat -t %{buildroot}%{_prefix}/local/share/v2ray
-ln -s /usr/local/share/v2ray/geosite.dat %{buildroot}%{_prefix}/local/share/v2ray/LoyalsoldierSite.dat
+install -Dm644 geoip.dat -t %{buildroot}%{_datadir}/v2ray
+install -Dm644 geosite.dat -t %{buildroot}%{_datadir}/v2ray
+ln -s %{_datadir}/v2ray/geosite.dat %{buildroot}%{_datadir}/v2ray/LoyalsoldierSite.dat
 
 %files
 %license LICENSE
-%{_prefix}/local/share/v2ray/geoip.dat
-%{_prefix}/local/share/v2ray/geosite.dat
-%{_prefix}/local/share/v2ray/LoyalsoldierSite.dat
+%{_datadir}/v2ray/geoip.dat
+%{_datadir}/v2ray/geosite.dat
+%{_datadir}/v2ray/LoyalsoldierSite.dat
 
 
 %changelog
