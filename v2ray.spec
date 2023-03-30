@@ -2,7 +2,7 @@
 
 Name: v2ray
 Version: 5.4.1
-Release: 1%{?dist}
+Release: 2%{?dist}
 Summary: A platform for building proxies to bypass network restrictions
 License: MIT
 URL: https://github.com/v2fly/v2ray-core
@@ -44,12 +44,15 @@ install -Dm755 v2ray -t %{buildroot}%{_bindir}/
 
 %files
 %license LICENSE
-%config /etc/v2ray/*.json
+%config(noreplace) /etc/v2ray/*.json
 %{_unitdir}/v2ray.service
 %{_unitdir}/v2ray@.service
 %{_bindir}/v2ray
 
 %changelog
+* Thu Mar 30 2023 zhullyb <zhullyb@outlook.com> - 5.4.1-2
+- mark /etc/v2ray/*.json as noreplace, thanks to github@liusen373 .
+
 * Mon Mar 20 2023 zhullyb <zhullyb@outlook.com> - 5.4.1-1
 - new version
 
