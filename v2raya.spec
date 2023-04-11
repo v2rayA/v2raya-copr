@@ -1,11 +1,12 @@
 Name:           v2raya
-Version:        2.0.4
-Release:        2%{?dist}
+Version:        2.0.5
+Release:        1%{?dist}
 Summary:        A Linux web GUI client of Project V which supports V2Ray, Xray, SS, SSR, Trojan and Pingtunnel
 License:        AGPL-3.0
 Group:          Productivity/Networking/Web/Proxy
 Url:            https://github.com/v2rayA/v2rayA
 Source0:        https://github.com/v2rayA/v2rayA/archive/refs/tags/v%{version}.tar.gz
+Source1:        v2raya.conf
 BuildRequires:  golang >= 1.17
 BuildRequires:  nodejs >= 17
 BuildRequires:  yarn
@@ -42,8 +43,10 @@ install -Dm 644 install/universal/v2raya.desktop -t %{buildroot}/usr/share/appli
 install -Dm 644 install/universal/v2raya.service -t %{buildroot}/usr/lib/systemd/system/
 install -Dm 644 install/universal/v2raya-lite.service -t %{buildroot}/usr/lib/systemd/user/
 install -Dm 644 gui/public/img/icons/android-chrome-512x512.png %{buildroot}/usr/share/icons/hicolor/512x512/apps/v2raya.png
+install -Dm 644 %{S:1} %{buildroot}%{_sysconfdir}/default/v2raya
 
 %files
+%config(noreplace) %{_sysconfdir}/default/v2raya
 %license LICENSE
 %{_sysconfdir}/v2raya/
 %{_bindir}/v2raya
@@ -53,6 +56,9 @@ install -Dm 644 gui/public/img/icons/android-chrome-512x512.png %{buildroot}/usr
 %{_datadir}/icons/hicolor/512x512/apps/v2raya.png
 
 %changelog
+* Tue Apr 11 2023 zhullyb <zhullyb@outlook.com> - 2.0.5-1
+- new version
+
 * Mon Mar 20 2023 zhullyb <zhullyb@outlook.com> - 2.0.4-2
 - depend on v2ray now
 
