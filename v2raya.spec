@@ -1,5 +1,5 @@
 Name:           v2raya
-Version:        2.0.5
+Version:        2.2.4.3
 Release:        1%{?dist}
 Summary:        A Linux web GUI client of Project V which supports V2Ray, Xray, SS, SSR, Trojan and Pingtunnel
 License:        AGPL-3.0
@@ -7,9 +7,8 @@ Group:          Productivity/Networking/Web/Proxy
 Url:            https://github.com/v2rayA/v2rayA
 Source0:        https://github.com/v2rayA/v2rayA/archive/refs/tags/v%{version}.tar.gz
 Source1:        v2raya.conf
-BuildRequires:  golang >= 1.17
-BuildRequires:  nodejs >= 17
-BuildRequires:  yarn
+Source2:        dl-core.sh
+BuildRequires:  wget
 Recommends:     v2ray >= 5
 Obsoletes:      v2rayA <= 1.5.5
 
@@ -24,20 +23,13 @@ A Linux web GUI client of Project V which supports V2Ray, Xray, SS, SSR, Trojan 
 %define BUILD_DIR %{_builddir}/v2rayA-%{version}
 
 %build
-# build gui
-cd %{BUILD_DIR}/gui
-export NODE_OPTIONS=--openssl-legacy-provider
-yarn --check-files
-OUTPUT_DIR=%{BUILD_DIR}/service/server/router/web yarn build
-# build core
-cd %{BUILD_DIR}/service
-export GO111MODULE=on
-export GOPROXY=https://goproxy.io
-go build -ldflags '-X github.com/v2rayA/v2rayA/conf.Version='%{version}' -s -w' -o v2raya
+cd %{_sourcedir}
+chmod +x ./dl-core.sh
+./dl-core.sh %{version}
 
 %install
 cd "%{BUILD_DIR}"
-install -Dm 755 service/v2raya -t %{buildroot}/usr/bin/
+install -Dm 755 %{_sourcedir}/v2raya_linux_* -t %{buildroot}/usr/bin/v2raya
 install -dm 750 %{buildroot}/etc/v2raya/
 install -Dm 644 install/universal/v2raya.desktop -t %{buildroot}/usr/share/applications/
 install -Dm 644 install/universal/v2raya.service -t %{buildroot}/usr/lib/systemd/system/
@@ -56,6 +48,9 @@ install -Dm 644 %{S:1} %{buildroot}%{_sysconfdir}/default/v2raya
 %{_datadir}/icons/hicolor/512x512/apps/v2raya.png
 
 %changelog
+* Wed Nov 15 2023 zhullyb <zhullyb@outlook.com> - 2.2.4.3-1
+- new version
+
 * Tue Apr 11 2023 zhullyb <zhullyb@outlook.com> - 2.0.5-1
 - new version
 
