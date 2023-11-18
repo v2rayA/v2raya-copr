@@ -1,6 +1,6 @@
 Name:           v2raya
 Version:        2.2.4.3
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        A Linux web GUI client of Project V which supports V2Ray, Xray, SS, SSR, Trojan and Pingtunnel
 License:        AGPL-3.0
 Group:          Productivity/Networking/Web/Proxy
@@ -29,7 +29,7 @@ chmod +x ./dl-core.sh
 
 %install
 cd "%{BUILD_DIR}"
-install -Dm 755 %{_sourcedir}/v2raya_linux_* -t %{buildroot}/usr/bin/v2raya
+install -Dm 755 %{_sourcedir}/v2raya_linux_* %{buildroot}/usr/bin/v2raya
 install -dm 750 %{buildroot}/etc/v2raya/
 install -Dm 644 install/universal/v2raya.desktop -t %{buildroot}/usr/share/applications/
 install -Dm 644 install/universal/v2raya.service -t %{buildroot}/usr/lib/systemd/system/
@@ -48,6 +48,9 @@ install -Dm 644 %{S:1} %{buildroot}%{_sysconfdir}/default/v2raya
 %{_datadir}/icons/hicolor/512x512/apps/v2raya.png
 
 %changelog
+* Sat Nov 18 2023 zhullyb <zhullyb@outlook.com> - 2.2.4.3-2
+- fix v2raya directory
+
 * Wed Nov 15 2023 zhullyb <zhullyb@outlook.com> - 2.2.4.3-1
 - new version
 
