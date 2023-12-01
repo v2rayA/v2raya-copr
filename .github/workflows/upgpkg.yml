@@ -1,0 +1,40 @@
+name: Upgpkg SPEC Version
+on: 
+  workflow_dispatch:
+  push:
+    branches:
+      - v2ray-geoip
+  schedule:
+    - cron: '0 0 */3 * *'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Export latest geoip version
+        run: |
+          NEW_VERSION=`curl -s https://api.github.com/repos/v2fly/geoip/releases/latest | jq -r '.tag_name' | sed 's/v//g'`
+          echo "NEW_VERSION=$NEW_VERSION" >> $GITHUB_ENV
+
+      - name: Run rpmdev-bumpspec action
+        uses: netoarmando/rpmdev-bumpspec-action@v1
+        with: 
+          specfile: 'v2ray-geoip.spec'
+          new: ${{ env.NEW_VERSION }}
+          userstring: "zhullyb <zhullyb@outlook.com>"
+
+      - name: Commit changes
+        run: |
+          git config --local user.email "zhullyb@outlook.com"
+          git config --local user.name "zhullyb"
+          git add .
+          git commit -m "upgpkg: v2ray-geoip@${{ env.NEW_VERSION }}"
+          git push
+
+      - name: trigger copr webhook
+        run: |
+          curl -X POST ${{ secrets.COPR_HOOK_URL }}v2ray-geoip/
