@@ -1,0 +1,14 @@
+name: v2ray CORP Build Trigger
+on: 
+  workflow_dispatch:
+  push:
+    branches:
+      - v2ray
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger v2ray build
+        run: |
+          curl -X POST ${{ secrets.COPR_HOOK_URL }}v2ray/

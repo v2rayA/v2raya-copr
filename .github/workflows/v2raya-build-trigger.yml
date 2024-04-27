@@ -1,0 +1,14 @@
+name: v2rayA CORP Build Trigger
+on: 
+  workflow_dispatch:
+  push:
+    branches:
+      - release
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger v2rayA build
+        run: |
+          curl -X POST ${{ secrets.COPR_HOOK_URL }}v2raya/
