@@ -1,7 +1,7 @@
 %global debug_package %{nil}
 
 Name: v2ray
-Version: 5.10.1
+Version: 5.15.3
 Release: 1%{?dist}
 Summary: A platform for building proxies to bypass network restrictions
 License: MIT
@@ -31,6 +31,8 @@ export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external"
 export CGO_LDFLAGS="${LDFLAGS}"
 export CGO_CFLAGS="${CFLAGS}"
 export CGO_CPPFLAGS="${CPPFLAGS}"
+go env -w GO111MODULE=on
+go env -w GOPROXY=https://goproxy.cn,direct
 go build -o v2ray ./main
 
 #check
@@ -50,6 +52,9 @@ install -Dm755 v2ray -t %{buildroot}%{_bindir}/
 %{_bindir}/v2ray
 
 %changelog
+* Sun Apr 28 2024 zhullyb <zhullyb@outlook.com> - 5.15.3-1
+- new version
+
 * Wed Nov 15 2023 zhullyb <zhullyb@outlook.com> - 5.10.1-1
 - new version
 
