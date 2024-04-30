@@ -3,10 +3,9 @@ on:
   workflow_dispatch:
   push:
     branches:
-      - master
       - v2ray-geoip
   schedule:
-    - cron: '0 0 */3 * *'
+    - cron: '0 0 */1 * *'
 
 jobs:
   build:
