@@ -14,8 +14,12 @@ BuildArch: noarch
 
 %prep
 %autosetup -n domain-list-community-%{version}
+curl https://raw.githubusercontent.com/codenoid/install-latest-go-linux/main/install-go.sh | bash
 
 %build
+export GOROOT="$HOME/go"
+export GOPATH="$HOME/go/packages"
+export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 go run main.go
 
 %install
