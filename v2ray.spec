@@ -1,7 +1,7 @@
 %global debug_package %{nil}
 
 Name: v2ray
-Version: 5.16.1
+Version: null
 Release: 1%{?dist}
 Summary: A platform for building proxies to bypass network restrictions
 License: MIT
@@ -52,6 +52,9 @@ install -Dm755 v2ray -t %{buildroot}%{_bindir}/
 %{_bindir}/v2ray
 
 %changelog
+* Thu Aug 08 2024 zhullyb <zhullyb@outlook.com> - null-1
+- new version
+
 * Fri Jun 07 2024 zhullyb <zhullyb@outlook.com> - 5.16.1-1
 - new version
 
