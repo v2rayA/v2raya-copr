@@ -24,7 +24,7 @@ jobs:
 
       - name: Export latest v2ray version
         run: |
-          NEW_VERSION=`curl -s https://api.github.com/repos/v2fly/v2ray-core/releases/latest | jq -r '.tag_name' | sed 's/v//g'`
+          NEW_VERSION=`curl -s https://api.github.com/repos/v2fly/v2ray-core/tags | jq -r .[0].name | sed 's/v//g'`
           echo "NEW_VERSION=$NEW_VERSION" >> $GITHUB_ENV
 
       - name: Run rpmdev-bumpspec action
