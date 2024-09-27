@@ -26,7 +26,23 @@ V2Ray is a platform for building proxies to bypass network restrictions.
 %autosetup -n %name-core-%{version}
 sed -i 's|/usr/local/bin|/usr/bin|;s|/usr/local/etc|/etc|' release/config/systemd/system/*.service
 
+LATEST_GO_VERSION="$(curl --silent https://go.dev/VERSION?m=text | head -n 1)";
+%ifarch x86_64
+    ARCH="amd64"
+%endif
+%ifarch aarch64
+    ARCH="arm64"
+%endif
+LATEST_GO_DOWNLOAD_URL="https://go.dev/dl/${LATEST_GO_VERSION}.linux-${ARCH}.tar.gz";
+cd $HOME
+curl -OJ -L --progress-bar $LATEST_GO_DOWNLOAD_URL
+tar -xf ${LATEST_GO_VERSION}.linux-${ARCH}.tar.gz
+
 %build
+export GOROOT="$HOME/go"
+export GOPATH="$HOME/go/packages"
+export PATH="$GOROOT/bin:$GOPATH/bin:$PATH"
+
 export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external"
 export CGO_LDFLAGS="${LDFLAGS}"
 export CGO_CFLAGS="${CFLAGS}"
