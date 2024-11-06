@@ -1,5 +1,5 @@
 Name: v2ray-geoip
-Version: 202410310053
+Version: 202411051341
 Release: 1%{?dist}
 Summary: GeoIP List for V2Ray
 License: CCPL:by-sa
@@ -18,6 +18,9 @@ install -Dm644 %{SOURCE0} %{buildroot}%{_datadir}/v2ray/geoip.dat
 %{_datadir}/v2ray/geoip.dat
 
 %changelog
+* Wed Nov 06 2024 zhullyb <zhullyb@outlook.com> - 202411051341-1
+- new version
+
 * Thu Oct 31 2024 zhullyb <zhullyb@outlook.com> - 202410310053-1
 - new version
 
