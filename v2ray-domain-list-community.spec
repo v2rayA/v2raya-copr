@@ -14,11 +14,18 @@ BuildArch: noarch
 
 %prep
 %autosetup -n domain-list-community-%{version}
+
+ARCH=$(uname -m)
+if [ "$ARCH" == "x86_64" ]; then
+    ARCH="amd64"
+elif [ "$ARCH" == "aarch64" ]; then
+    ARCH="arm64"
+fi
 LATEST_GO_VERSION="$(curl --silent https://go.dev/VERSION?m=text | head -n 1)";
-LATEST_GO_DOWNLOAD_URL="https://go.dev/dl/${LATEST_GO_VERSION}.linux-amd64.tar.gz"
+LATEST_GO_DOWNLOAD_URL="https://go.dev/dl/${LATEST_GO_VERSION}.linux-${ARCH}.tar.gz"
 cd $HOME
 curl -OJ -L --progress-bar $LATEST_GO_DOWNLOAD_URL
-tar -xf ${LATEST_GO_VERSION}.linux-amd64.tar.gz
+tar -xf ${LATEST_GO_VERSION}.linux-${ARCH}.tar.gz
 
 %build
 export GOROOT="$HOME/go"
