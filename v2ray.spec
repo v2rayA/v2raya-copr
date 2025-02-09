@@ -48,7 +48,6 @@ export CGO_LDFLAGS="${LDFLAGS}"
 export CGO_CFLAGS="${CFLAGS}"
 export CGO_CPPFLAGS="${CPPFLAGS}"
 go env -w GO111MODULE=on
-go env -w GOPROXY=https://goproxy.cn,direct
 go build -o v2ray ./main
 
 #check
