@@ -25,6 +25,10 @@ jobs:
       - name: Export latest domain-list-community version
         run: |
           NEW_VERSION=`curl -s https://api.github.com/repos/v2fly/domain-list-community/releases/latest | jq -r '.tag_name' | sed 's/v//g'`
+          if [ -z "$NEW_VERSION" ] || [ "$NEW_VERSION" = "null" ] ; then
+            echo "NEW_VERSION is empty, stopping the workflow"
+            exit 1
+          fi
           echo "NEW_VERSION=$NEW_VERSION" >> $GITHUB_ENV
 
       - name: Run rpmdev-bumpspec action
