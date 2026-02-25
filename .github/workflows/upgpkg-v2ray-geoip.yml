@@ -24,7 +24,17 @@ jobs:
 
       - name: Export latest geoip version
         run: |
-          NEW_VERSION=`curl -s https://api.github.com/repos/v2fly/geoip/releases/latest | jq -r '.tag_name' | sed 's/v//g'`
+          NEW_VERSION=""
+          for i in 1 2 3 4 5; do
+            NEW_VERSION=`curl -s https://api.github.com/repos/v2fly/geoip/releases/latest | jq -r '.tag_name' | sed 's/v//g'`
+            if [ -n "$NEW_VERSION" ] && [ "$NEW_VERSION" != "null" ] ; then
+              break
+            fi
+            if [ "$i" -lt 5 ]; then
+              echo "Attempt $i/5 failed, retrying in 10 seconds..."
+              sleep 10
+            fi
+          done
           if [ -z "$NEW_VERSION" ] || [ "$NEW_VERSION" = "null" ] ; then
             echo "NEW_VERSION is empty, stopping the workflow"
             exit 1
