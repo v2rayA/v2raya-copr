@@ -1,6 +1,6 @@
 Name:           v2raya
 Version:        2.4.6
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        A Linux web GUI client of Project V which supports V2Ray, Xray, SS, SSR, Trojan and Pingtunnel
 License:        AGPL-3.0
 Group:          Productivity/Networking/Web/Proxy
@@ -9,7 +9,6 @@ Source0:        https://github.com/v2rayA/v2rayA/archive/refs/tags/v%{version}.t
 Source1:        v2raya.conf
 Source2:        dl-core.sh
 BuildRequires:  wget
-Recommends:     v2ray >= 5
 Obsoletes:      v2rayA <= 1.5.5
 
 %undefine _missing_build_ids_terminate_build
@@ -30,6 +29,7 @@ chmod +x ./dl-core.sh
 %install
 cd "%{BUILD_DIR}"
 install -Dm 755 %{_sourcedir}/v2raya_linux_* %{buildroot}/usr/bin/v2raya
+install -Dm 755 %{_sourcedir}/v2raya_core_linux_* %{buildroot}/usr/bin/v2raya_core
 install -dm 750 %{buildroot}/etc/v2raya/
 install -Dm 644 install/universal/v2raya.desktop -t %{buildroot}/usr/share/applications/
 install -Dm 644 install/universal/v2raya.service -t %{buildroot}/usr/lib/systemd/system/
@@ -42,12 +42,16 @@ install -Dm 644 %{S:1} %{buildroot}%{_sysconfdir}/default/v2raya
 %license LICENSE
 %{_sysconfdir}/v2raya/
 %{_bindir}/v2raya
+%{_bindir}/v2raya_core
 %{_prefix}/lib/systemd/system/v2raya.service
 %{_prefix}/lib/systemd/user/v2raya-lite.service
 %{_datadir}/applications/v2raya.desktop
 %{_datadir}/icons/hicolor/512x512/apps/v2raya.png
 
 %changelog
+* Fri Jul 10 2026 zhullyb <zhullyb@outlook.com> - 2.4.6-2
+- bundle v2raya_core and drop v2ray recommends
+
 * Tue Jun 30 2026 zhullyb <zhullyb@outlook.com> - 2.4.6-1
 - new version
 

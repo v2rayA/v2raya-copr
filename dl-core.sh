@@ -6,37 +6,37 @@ ARCH=$(uname -m)
 
 case $ARCH in
     x86_64)
-        FILE=v2raya_linux_x64_$VERSION
+        ARCH_NAME=x64
         ;;
     i686)
-        FILE=v2raya_linux_x86_$VERSION
+        ARCH_NAME=x86
         ;;
     armv5*)
-        FILE=v2raya_linux_armv5_$VERSION
+        ARCH_NAME=armv5
         ;;
     armv6*)
-        FILE=v2raya_linux_armv6_$VERSION
+        ARCH_NAME=armv6
         ;;
     armv7*)
-        FILE=v2raya_linux_armv7_$VERSION
+        ARCH_NAME=armv7
         ;;
     aarch64*)
-        FILE=v2raya_linux_arm64_$VERSION
+        ARCH_NAME=arm64
         ;;
     mips*)
-        FILE=v2raya_linux_mips32_$VERSION
+        ARCH_NAME=mips32
         ;;
     mipsle*)
-        FILE=v2raya_linux_mips32le_$VERSION
+        ARCH_NAME=mips32le
         ;;
     mips64*)
-        FILE=v2raya_linux_mips64_$VERSION
+        ARCH_NAME=mips64
         ;;
     mips64le*)
-        FILE=v2raya_linux_mips64le_$VERSION
+        ARCH_NAME=mips64le
         ;;
     riscv64*)
-        FILE=v2raya_linux_riscv64_$VERSION
+        ARCH_NAME=riscv64
         ;;
     *)
         echo "Unsupported architecture: $ARCH"
@@ -44,4 +44,6 @@ case $ARCH in
         ;;
 esac
 
-wget https://github.com/v2rayA/v2rayA/releases/download/v$VERSION/$FILE
+BASE_URL=https://github.com/v2rayA/v2rayA/releases/download/v$VERSION
+wget "$BASE_URL/v2raya_linux_${ARCH_NAME}_$VERSION"
+wget "$BASE_URL/v2raya_core_linux_${ARCH_NAME}_$VERSION"
