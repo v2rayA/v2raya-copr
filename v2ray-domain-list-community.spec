@@ -1,5 +1,5 @@
 Name: v2ray-domain-list-community
-Version: 20261025014458
+Version: 20261026102707
 Release: 1%{?dist}
 Summary: A list of domains to be used as geosites for routing purpose in Project V
 License: MIT
@@ -42,6 +42,9 @@ install -Dm 644 LICENSE %{buildroot}%{_datadir}/licenses/%{name}/LICENSE
 %{_datadir}/v2ray/geosite.dat
 
 %changelog
+* Tue Oct 27 2026 zhullyb <zhullyb@outlook.com> - 20261026102707-1
+- new version
+
 * Sun Oct 25 2026 zhullyb <zhullyb@outlook.com> - 20261025014458-1
 - new version
 
